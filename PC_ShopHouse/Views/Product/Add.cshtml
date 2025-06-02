@@ -1,0 +1,62 @@
+﻿@model PC_ShopHouse.ViewModels.ProductCreateViewModel
+
+<form asp-action="Add" enctype="multipart/form-data" method="post">
+    <div>
+        <label asp-for="Product.ProductName"></label>
+        <input asp-for="Product.ProductName" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Product.Price"></label>
+        <input asp-for="Product.Price" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Product.Description"></label>
+        <textarea asp-for="Product.Description" class="form-control"></textarea>
+    </div>
+    <div>
+        <label asp-for="Product.CategoryId"></label>
+        <select asp-for="Product.CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "CategoryName"))" id="CategoryId" class="form-control">
+            <option value="">-- Chọn loại sản phẩm --</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Product.BrandId"></label>
+        <select asp-for="Product.BrandId" asp-items="@(new SelectList(Model.Brands, "Id", "BrandName"))" class="form-control">
+            <option value="">-- Chọn loại sản phẩm --</option>
+        </select>
+    </div>
+    <div>
+        <label>Ảnh đại diện</label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+    </div>
+
+    <div id="CPUFields" class="detailFields" style="display:none;">
+        @Html.Partial("_AddCPUFields", Model)
+    </div>
+    <div id="MainboardFields" class="detailFields" style="display:none">
+        @Html.Partial("_AddMainboardFields", Model)
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>
+@section Scripts {
+    <script>
+        function updateDetailFields() {
+            // Lấy id Category hiện tại
+            var select = document.getElementById("CategoryId");
+            var selected = select.options[select.selectedIndex];
+            var selectedText = selected.text.trim();
+            var allFields = document.querySelectorAll(".detailFields");
+            allFields.forEach(f => f.style.display = "none");
+            if (selectedText === "CPU") {
+                document.getElementById("CPUFields").style.display = "block";
+            }
+            if (selectedText === "Mainboard") {
+                document.getElementById("MainboardFields").style.display = "block";
+            }
+            // Thêm các loại khác...
+        }
+        document.getElementById("CategoryId").addEventListener("change", updateDetailFields);
+        window.onload = updateDetailFields;
+    </script>
+}

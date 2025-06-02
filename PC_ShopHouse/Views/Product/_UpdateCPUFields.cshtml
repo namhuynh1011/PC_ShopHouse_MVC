@@ -1,0 +1,45 @@
+﻿@model PC_ShopHouse.ViewModels.ProductEditViewModel
+@if (Model.CPU != null)
+{
+    <input type="hidden" asp-for="CPU.Id" />
+}
+<div class="form-group">
+    <label asp-for="CPU.Socket"></label>
+    <input asp-for="CPU.Socket" class="form-control" />
+</div>
+ <div class="form-group">
+    <label asp-for="CPU.Cores"></label>
+    <input asp-for="CPU.Cores" type="number" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="CPU.Threads"></label>
+    <input asp-for="CPU.Threads" type="number" class="form-control" />
+    <span asp-validation-for="CPU.Threads" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CPU.BaseClock"></label>
+    <input asp-for="CPU.BaseClock" class="form-control" />
+    <span asp-validation-for="CPU.BaseClock" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CPU.BoostClock"></label>
+    <input asp-for="CPU.BoostClock" class="form-control" />
+    <span asp-validation-for="CPU.BoostClock" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CPU.TDP"></label>
+    <input asp-for="CPU.TDP" class="form-control" />
+    <span asp-validation-for="CPU.TDP" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CPU.Cache"></label>
+    <input asp-for="CPU.Cache" type="number" class="form-control" />
+    <span asp-validation-for="CPU.Cache" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <div class="form-check">
+        <input asp-for="CPU.IntegratedGraphics" class="form-check-input" type="checkbox" />
+        <label asp-for="CPU.IntegratedGraphics" class="form-check-label"></label>
+    </div>
+    <span asp-validation-for="CPU.IntegratedGraphics" class="text-danger"></span>
+</div>

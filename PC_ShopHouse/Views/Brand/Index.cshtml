@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PC_ShopHouse.Models.Brand>
+
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+
+<h2> Danh Sách Hãng</h2>
+<table class="table">
+    <thead>
+    <th>Tên Hãng</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+        @foreach (var brand in Model)
+        {
+            <tr>
+                <td>@brand.BrandName</td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        <a class="text-white text-decoration-none" asp-action="Update" asp-route-id="@brand.Id">Edit</a>
+                    </button>
+                    |
+                    <form asp-action="Delete" asp-route-id="@brand.Id" method="post" style="display:inline">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

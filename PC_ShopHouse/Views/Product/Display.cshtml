@@ -1,0 +1,47 @@
+﻿@model PC_ShopHouse.ViewModels.ProductDetailViewModel
+
+<a asp-action="Index">Trở Lại</a>
+<h2>Thông Tin Sản Phẩm</h2>
+<h3 class="container">@Model.Product.ProductName</h3>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.Product.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Product.ProductName" />
+        </div>
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <td>@Model.Product.ProductName</td>
+                    </tr>
+                    <tr>
+                        <th>Giá</th>
+                        <td>@Model.Product.Price.ToString("N0") ₫</td>
+                    </tr>
+                    <tr>
+                        <th>Hãng</th>
+                        <td>@Model.Product.Brand?.BrandName</td>
+                    </tr>
+                    <tr>
+                        <th>Loại</th>
+                        <td>@Model.Product.Category?.CategoryName</td>
+                    </tr>
+                    <tr>
+                        <th>Mô tả</th>
+                        <td>
+                            @Html.Raw(Model.Product.Description?.Replace("\r\n", "<br />").Replace("\n", "<br />"))
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            @{
+                var category = Model.Product.Category?.CategoryName;
+                if (category == "CPU")
+                {
+                    @Html.Partial("_CPUDetail", Model.CPU)
+                }
+            }
+        </div>
+    </div>
+</div>

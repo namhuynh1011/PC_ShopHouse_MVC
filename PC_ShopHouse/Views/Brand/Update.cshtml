@@ -1,0 +1,17 @@
+﻿@model PC_ShopHouse.Models.Brand
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Update Brand";
+}
+<h2>Add Brand</h2>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="BrandName">Nhập Tên Loại</label>
+        <input asp-for="BrandName" class="form-control" />
+        <span asp-validation-for="BrandName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

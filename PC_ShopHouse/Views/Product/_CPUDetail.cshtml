@@ -1,0 +1,42 @@
+﻿@model PC_ShopHouse.Models.CPU
+
+@if (Model != null)
+{
+    <h4>Thông số kỹ thuật CPU</h4>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Socket</th>
+                <td>@Model.Socket</td>
+            </tr>
+            <tr>
+                <th>Số nhân</th>
+                <td>@Model.Cores</td>
+            </tr>
+            <tr>
+                <th>Số luồng</th>
+                <td>@Model.Threads</td>
+            </tr>
+            <tr>
+                <th>Xung cơ bản</th>
+                <td>@Model.BaseClock GHz</td>
+            </tr>
+            <tr>
+                <th>Xung boost</th>
+                <td>@Model.BoostClock GHz</td>
+            </tr>
+            <tr>
+                <th>TDP</th>
+                <td>@Model.TDP W</td>
+            </tr>
+            <tr>
+                <th>Bộ nhớ đệm</th>
+                <td>@Model.Cache MB</td>
+            </tr>
+            <tr>
+                <th>Đồ họa tích hợp</th>
+                <td>@(Model.IntegratedGraphics ? "Có" : "Không")</td>
+            </tr>
+        </tbody>
+    </table>
+}

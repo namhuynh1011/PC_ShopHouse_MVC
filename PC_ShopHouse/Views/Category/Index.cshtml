@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PC_ShopHouse.Models.Category>
+
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+
+<h2> Danh Sách Loại Sản Phẩm</h2>
+<table class="table">
+    <thead>
+        <th>Tên Loại Sản Phẩm</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @foreach(var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryName</td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        <a class="text-white text-decoration-none" asp-action="Update" asp-route-id="@category.Id">Edit</a> 
+                    </button>
+                    |
+                    <form asp-action="Delete" asp-route-id="@category.Id" method="post" style="display:inline">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
