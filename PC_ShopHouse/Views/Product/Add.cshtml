@@ -33,12 +33,13 @@
     <div id="CPUFields" class="detailFields" style="display:none;">
         @Html.Partial("_AddCPUFields", Model)
     </div>
-    <div id="MainboardFields" class="detailFields" style="display:none">
+    @* <div id="MainboardFields" class="detailFields" style="display:none">
         @Html.Partial("_AddMainboardFields", Model)
-    </div>
+    </div> *@
     
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 @section Scripts {
     <script>
         function updateDetailFields() {
@@ -51,9 +52,9 @@
             if (selectedText === "CPU") {
                 document.getElementById("CPUFields").style.display = "block";
             }
-            if (selectedText === "Mainboard") {
-                document.getElementById("MainboardFields").style.display = "block";
-            }
+            // if (selectedText === "Mainboard") {
+            //     document.getElementById("MainboardFields").style.display = "block";
+            // }
             // Thêm các loại khác...
         }
         document.getElementById("CategoryId").addEventListener("change", updateDetailFields);

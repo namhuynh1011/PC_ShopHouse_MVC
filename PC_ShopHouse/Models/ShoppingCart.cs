@@ -5,7 +5,7 @@
         public List<CartItem> Items { get; set; } = new List<CartItem>();
         public void AddItem(CartItem item)
         {
-            var existingItem = Items.FirstOrDefault(i => i.Id == item.Id);
+            var existingItem = Items.FirstOrDefault(i => i.ProductId == item.ProductId);
             if (existingItem != null)
             {
                 existingItem.Quantity += item.Quantity;
@@ -22,7 +22,7 @@
         }
         public void RemoveItem(CartItem item)
         {
-            Items.RemoveAll(i => i.Id == item.Id);
+            Items.RemoveAll(i => i.ProductId == item.ProductId);
         }
 
     }

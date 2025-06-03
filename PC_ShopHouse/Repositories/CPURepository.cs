@@ -39,7 +39,6 @@ namespace PC_ShopHouse.Repositories
             var existing = await _context.CPUs.FirstOrDefaultAsync(c => c.ProductId == cpu.ProductId);
             if (existing != null)
             {
-                // Cập nhật các trường cần thiết (bạn có thể dùng AutoMapper hoặc tự gán từng trường)
                 existing.Socket = cpu.Socket;
                 existing.Cores = cpu.Cores;
                 existing.Threads = cpu.Threads;
