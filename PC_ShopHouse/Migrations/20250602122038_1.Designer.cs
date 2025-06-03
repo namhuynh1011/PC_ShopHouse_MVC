@@ -12,8 +12,8 @@ using PC_ShopHouse.Models;
 namespace PC_ShopHouse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250531030633_3")]
-    partial class _3
+    [Migration("20250602122038_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

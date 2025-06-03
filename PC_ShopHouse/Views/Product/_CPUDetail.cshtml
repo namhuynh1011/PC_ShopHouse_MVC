@@ -33,10 +33,13 @@
                 <th>Bộ nhớ đệm</th>
                 <td>@Model.Cache MB</td>
             </tr>
-            <tr>
-                <th>Đồ họa tích hợp</th>
-                <td>@(Model.IntegratedGraphics ? "Có" : "Không")</td>
-            </tr>
+            @if (!string.IsNullOrEmpty(Model.IntegratedGraphics))
+            {
+                <tr>
+                    <th>Đồ họa tích hợp</th>
+                    <td>@Model.IntegratedGraphics</td>
+                </tr>
+            }
         </tbody>
     </table>
 }

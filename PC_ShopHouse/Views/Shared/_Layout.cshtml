@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using PC_ShopHouse.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,50 +25,54 @@
                         <button type="button" class="btn btn-primary">
                             <a class="text-decoration-none text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </button>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                Product
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product List</a>
-                                 </li>
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Product" asp-action="Add">Add Product</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                Category
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Category" asp-action="Add">Add Category</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                                Brand
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Brand" asp-action="Index">Brand</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-dark" asp-area="" asp-controller="Brand" asp-action="Add">Add Brand</a>
-                                </li>
-                            </ul>
-                        </div>
+                        @if (User.IsInRole(SD.Role_Admin))
+                        {
+
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                    Product
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product List</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Product" asp-action="Add">Add Product</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                    Category
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Category" asp-action="Add">Add Category</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                    Brand
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Brand" asp-action="Index">Brand</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Brand" asp-action="Add">Add Brand</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
 
                     </div>
                 </div>
-                <partial name ="_LoginPartial" />
-                <form class="d-flex">
+                <partial name="_LoginPartial" />
+                <form class="d-flex" asp-controller="ShoppingCart" asp-action="Index">
                     <button type="submit" class="btn btn-outline-dark">
                         <i class="bi-cart-fill me-1">Cart</i>
                     </button>
@@ -75,7 +80,38 @@
             </div>
         </nav>
     </header>
+
     <div class="container-xxl">
+        @* <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/slider1_2.jpg" alt="Slider1" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/slider1_3.jpg" alt="Slider2" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/slider1_4.jpg" alt="Slider3" class="d-block w-100">
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div> *@
         <div class="row">
             <main role="main" class="pb-3">
                 @RenderBody()
@@ -83,11 +119,11 @@
         </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container-xl">
             &copy; 2025 - PC_ShopHouse - 
         </div>
-    </footer>
+    </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

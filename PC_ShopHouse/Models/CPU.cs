@@ -13,7 +13,7 @@
         public string BoostClock { get; set; }
         public string TDP { get; set; }
         public int Cache { get; set; }
-        public bool IntegratedGraphics { get; set; }
+        public string? IntegratedGraphics { get; set; }
 
     }
 }
