@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PC_ShopHouse.Models;
 using PC_ShopHouse.Models.Extentions;
@@ -41,7 +42,7 @@ namespace PC_ShopHouse.Controllers
                 HttpContext.Session.SetOjectAsJson("Cart", cart);
             }
 
-            return RedirectToAction("Index");
+            return Ok();
         }
 
         public async Task<IActionResult> RemoveItemFromCart(int productId)
@@ -117,7 +118,7 @@ namespace PC_ShopHouse.Controllers
 
             return RedirectToAction("MyOrders");
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> MyOrders()
         {

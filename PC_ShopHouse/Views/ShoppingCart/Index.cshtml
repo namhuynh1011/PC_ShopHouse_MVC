@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Giỏ hàng";
 }
-
+<a asp-controller="ShoppingCart" asp-action="MyOrders" class="btn btn-outline-dark">
+    <i class="bi-cart-fill me-1">Cart</i>
+</a>
 <h2 class="mb-4">Giỏ hàng của bạn</h2>
 
 @if (TempData["Success"] != null)
