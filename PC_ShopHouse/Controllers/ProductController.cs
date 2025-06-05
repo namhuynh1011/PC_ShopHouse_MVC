@@ -14,15 +14,17 @@ namespace PC_ShopHouse.Controllers
         private readonly IBrandRepository _brandRepository;
         private readonly ICPURepository _cpuRepository;
         private readonly IMainboardRepository _mainboardRepository;
+        private readonly IGPURepository _gpuRepository;
         public ProductController(IProductRepository productRepository,
        ICategoryRepository categoryRepository, IBrandRepository brandRepository, ICPURepository cpuRepository
-            , IMainboardRepository mainboardRepository)
+            , IMainboardRepository mainboardRepository, IGPURepository gPURepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
             _brandRepository = brandRepository;
             _cpuRepository = cpuRepository;
             _mainboardRepository = mainboardRepository;
+            _gpuRepository = gPURepository;
         }
         public async Task<IActionResult> Index(int? categoryId)
         {
@@ -76,8 +78,18 @@ namespace PC_ShopHouse.Controllers
                 vm.CPU.ProductId = vm.Product.Id;
                 await _cpuRepository.AddCPUAsync(vm.CPU);
             }
+            else if(category != null && category.CategoryName == "Mainboard" && vm.Mainboard != null)
+            {
+                vm.Mainboard.ProductId = vm.Product.Id;
+                await _mainboardRepository.AddAsync(vm.Mainboard);
+            }
+            else if(category != null && category.CategoryName == "GPU" && vm.Mainboard != null)
+            {
+                vm.GPU.ProductId = vm.Product.Id;
+                await _gpuRepository.CreateGPUAsync(vm.GPU);
+            }
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Display(int id)
         {
@@ -154,7 +166,7 @@ namespace PC_ShopHouse.Controllers
             if (category?.CategoryName == "CPU" && vm.CPU != null)
             {
                 vm.CPU.ProductId = product.Id;
-                await _cpuRepository.UpdateOrCreateAsync(vm.CPU);
+                await _cpuRepository.UpdateCPUAsync(vm.CPU);
             }
             //else if (category?.CategoryName == "Mainboard" && vm.Mainboard != null)
             //{

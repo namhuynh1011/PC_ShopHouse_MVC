@@ -157,7 +157,7 @@ namespace PC_ShopHouse.Areas.Admin.Controllers
             if (category?.CategoryName == "CPU" && vm.CPU != null)
             {
                 vm.CPU.ProductId = product.Id;
-                await _cpuRepository.UpdateOrCreateAsync(vm.CPU);
+                await _cpuRepository.UpdateCPUAsync(vm.CPU);
             }
             //else if (category?.CategoryName == "Mainboard" && vm.Mainboard != null)
             //{

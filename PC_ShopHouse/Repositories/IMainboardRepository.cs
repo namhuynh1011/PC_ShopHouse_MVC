@@ -6,7 +6,7 @@ namespace PC_ShopHouse.Repositories
     {
         Task<IEnumerable<Mainboard>> GetAllAsync();
         Task<Mainboard> GetByIdAsync(int id);
-        Task AddMainAsync(Mainboard mainboard);
+        Task AddAsync(Mainboard mainboard);
         Task UpdateAsync(Mainboard mainboard);
         Task DeleteAsync(int id);
     }

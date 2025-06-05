@@ -22,7 +22,7 @@ namespace PC_ShopHouse.Repositories
                 .Include(m => m.Product)
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
-        public Task AddMainAsync(Mainboard mainboard)
+        public Task AddAsync(Mainboard mainboard)
         {
             _context.Mainboards.Add(mainboard);
             return _context.SaveChangesAsync();
