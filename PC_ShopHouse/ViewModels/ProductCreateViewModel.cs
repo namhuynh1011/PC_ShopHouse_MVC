@@ -15,5 +15,6 @@ namespace PC_ShopHouse.ViewModels
         // Thêm các trường chi tiết linh kiện 
         public CPU? CPU { get; set; }
         public Mainboard? Mainboard { get; set; }
+        public GPU? GPU { get; set; }
     }
 }

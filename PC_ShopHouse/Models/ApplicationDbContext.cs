@@ -18,5 +18,6 @@ namespace PC_ShopHouse.Models
         public DbSet<Brand> Brands { get; set; }
         public DbSet<CPU> CPUs { get; set; }
         public DbSet<Mainboard> Mainboards { get; set; }
+        public DbSet<GPU> GPUs { get; set; }
     }
 }

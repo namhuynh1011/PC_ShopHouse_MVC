@@ -9,7 +9,6 @@ namespace PC_ShopHouse.Repositories
         Task<CPU?> GetCPUByIdAsync(int id);
         Task AddCPUAsync(CPU cpu);
         Task UpdateCPUAsync(CPU cpu);
-        Task UpdateOrCreateAsync(CPU cpu);
         Task DeleteCPUAsync(int id);
     }
 }

@@ -31,7 +31,7 @@ body {
 }
 
 header {
-    background: #f3f563;
+    background: white;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     margin-bottom: 20px;
@@ -98,5 +98,21 @@ main[role="main"] {
 @media(max-width: 575px) {
     .navbar-brand {
         font-size: 1.1rem;
+    }
+}
+
+.navbar-brand img {
+    height: 48px; /* Chiều cao logo, bạn có thể điều chỉnh */
+    width: auto; /* Tự động tính chiều rộng theo tỉ lệ */
+    margin-right: 8px; /* Khoảng cách với chữ bên cạnh (nếu có) */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    object-fit: contain; /* Giữ nguyên tỉ lệ ảnh */
+    /* Nếu muốn bo tròn logo: */
+    /* border-radius: 8px; */
+}
+
+@media (max-width: 576px) {
+    .navbar-brand img {
+        height: 36px; /* Logo nhỏ hơn trên mobile */
     }
 }

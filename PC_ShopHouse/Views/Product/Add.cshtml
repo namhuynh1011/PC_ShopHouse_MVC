@@ -33,30 +33,45 @@
     <div id="CPUFields" class="detailFields" style="display:none;">
         @Html.Partial("_AddCPUFields", Model)
     </div>
-    @* <div id="MainboardFields" class="detailFields" style="display:none">
+    <div id="MainboardFields" class="detailFields" style="display:none">
         @Html.Partial("_AddMainboardFields", Model)
-    </div> *@
+    </div>
+    <div id="GPUFields" class="detailFields" style="display:none">
+        @Html.Partial("_AddGPUFields", Model)
+    </div>
     
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 @section Scripts {
     <script>
+        // Khai báo các loại sản phẩm cần hỗ trợ
+        const productTypes = ["CPU", "Mainboard", "GPU", "PSU"];
+
         function updateDetailFields() {
-            // Lấy id Category hiện tại
+            // Ẩn và disable tất cả field của loại sản phẩm trước
+            productTypes.forEach(type => {
+                const fieldDiv = document.getElementById(type + "Fields");
+                if (fieldDiv) {
+                    fieldDiv.style.display = "none";
+                }
+                document.querySelectorAll('.' + type.toLowerCase() + '-input').forEach(e => e.disabled = true);
+            });
+
+            // Lấy loại sản phẩm đang chọn
             var select = document.getElementById("CategoryId");
-            var selected = select.options[select.selectedIndex];
-            var selectedText = selected.text.trim();
-            var allFields = document.querySelectorAll(".detailFields");
-            allFields.forEach(f => f.style.display = "none");
-            if (selectedText === "CPU") {
-                document.getElementById("CPUFields").style.display = "block";
+            var selectedText = select.options[select.selectedIndex].text.trim();
+
+            // Hiện và enable loại sản phẩm phù hợp
+            if (productTypes.includes(selectedText)) {
+                const fieldDiv = document.getElementById(selectedText + "Fields");
+                if (fieldDiv) {
+                    fieldDiv.style.display = "block";
+                }
+                document.querySelectorAll('.' + selectedText.toLowerCase() + '-input').forEach(e => e.disabled = false);
             }
-            // if (selectedText === "Mainboard") {
-            //     document.getElementById("MainboardFields").style.display = "block";
-            // }
-            // Thêm các loại khác...
         }
+
         document.getElementById("CategoryId").addEventListener("change", updateDetailFields);
         window.onload = updateDetailFields;
     </script>
