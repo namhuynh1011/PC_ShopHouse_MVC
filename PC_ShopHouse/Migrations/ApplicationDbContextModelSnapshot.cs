@@ -245,7 +245,7 @@ namespace PC_ShopHouse.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("PC_ShopHouse.Models.CPU", b =>
